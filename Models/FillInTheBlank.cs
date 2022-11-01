@@ -8,6 +8,6 @@ namespace backend.Models
     public class FillInTheBlank
     {
         public List<string> TextParts {get;set;}
-        public List<string> Options {get;set;}
+        public List<List<string>> Options {get;set;}
     }
 }

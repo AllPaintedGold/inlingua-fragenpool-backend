@@ -7,6 +7,6 @@ namespace backend.Models
 {
     public class DragAndDrop
     {
-        
+        public List<string> Parts {get;set;}
     }
 }

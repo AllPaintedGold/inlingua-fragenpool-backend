@@ -9,6 +9,7 @@ namespace backend.Models
     public class Question
     {
         public int Id {get; set;}
+        public string Subject {get;set;}
         public string Type {get;set;}
         public DateTime DateOfCreation {get;set;}
         public int CreatedBy {get;set;}
