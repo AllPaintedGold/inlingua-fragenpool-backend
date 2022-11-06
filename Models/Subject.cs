@@ -7,8 +7,8 @@ namespace backend.Models
 {
     public class Subject
     {
-        public int SubjectId {get;set;}
+        public int Id {get;set;}
+        public string Color {get;set;}
         public string Name {get;set;}
-        public List<Question> Questions {get;set;}
     }
 }

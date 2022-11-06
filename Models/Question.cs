@@ -13,14 +13,15 @@ namespace backend.Models
         [Required]public string KindOfQuestion {get;set;}
         [Required]public DateTime DateOfCreation {get;set;}
         [Required]public string CreatedBy {get;set;}
+        [Required]public string Subject {get;set;}
         public DateTime DateOfLastChange {get;set;}
         public string? LastChangedBy {get; set;}
+
         
         [Required,Column(TypeName= "json")]
-        public TypeSpecific<Type> TypeSpecifics{ get;set;}
+        public string TypeSpecifics{ get;set;}
 
-        [Required]public int SubjectId {get;set;} 
-        public Subject Subject {get;set;}
+        
 
 
     }

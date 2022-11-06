@@ -6,15 +6,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using backend.Data;
-using backend.Models;
 
 #nullable disable
 
 namespace backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221105151144_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221106181538_SubjectColorProperty")]
+    partial class SubjectColorProperty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,51 +49,34 @@ namespace backend.Migrations
                     b.Property<string>("LastChangedBy")
                         .HasColumnType("text");
 
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("integer");
-
-                    b.Property<TypeSpecific<Type>>("TypeSpecifics")
+                    b.Property<string>("TypeSpecifics")
                         .IsRequired()
                         .HasColumnType("json");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SubjectId");
 
                     b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("backend.Models.Subject", b =>
                 {
-                    b.Property<int>("SubjectId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("SubjectId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("SubjectId");
+                    b.HasKey("Id");
 
                     b.ToTable("Subjects");
-                });
-
-            modelBuilder.Entity("backend.Models.Question", b =>
-                {
-                    b.HasOne("backend.Models.Subject", "Subject")
-                        .WithMany("Questions")
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Subject");
-                });
-
-            modelBuilder.Entity("backend.Models.Subject", b =>
-                {
-                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }
