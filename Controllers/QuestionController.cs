@@ -43,7 +43,7 @@ namespace backend.Controllers
             return Ok(await _questionService.GetQuestionsForSubject(subject));
         }
 
-        [HttpPut("UpdateQuestion/{updatedQuestion}")]
+        [HttpPut("UpdateQuestion")]
         public async Task<ActionResult<ServiceResponse<Question>>> UpdateQuestion(Question updatedQuestion)
         {
             return Ok(await _questionService.UpdateQuestion(updatedQuestion));

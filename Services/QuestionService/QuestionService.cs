@@ -93,9 +93,14 @@ namespace backend.Services.QuestionService
             try
             {
                 var dbQuestions = await _context.Questions
-                    .Where(e => e.Subject == "string")
+                    .Where(e => e.Subject == subject)
                     .ToListAsync();
                 response.Data = dbQuestions;
+                if(response.Data.Count == 0)
+                {
+                    response.Message = "no questions yet";
+                    response.Success = false;
+                }
             }
             catch (Exception ex)
             {
