@@ -17,15 +17,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddScoped<ISubjectService, SubjectService>();
 // cors specification
-builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>{
-   builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+builder.Services.AddCors(options => options.AddPolicy("NUXT", builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader()
+           .AllowCredentials();
 }));
 
 var app = builder.Build();
 
-
+app.UseCors("NUXT");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
