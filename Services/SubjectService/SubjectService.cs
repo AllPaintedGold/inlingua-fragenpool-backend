@@ -51,5 +51,26 @@ namespace backend.Services.SubjectService
             
             return response; 
         }
+
+        public async Task<ServiceResponse<List<Subject>>> GetAllSubjects()
+        {
+            var response = new ServiceResponse<List<Subject>>();
+            try
+            {
+                var dbSubjects = await _context.Subjects.ToListAsync();
+                response.Data = dbSubjects;
+                if(response.Data.Count == 0)
+                {
+                    response.Message = "no subjects yet";
+                    response.Success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+            return response;
+        }
     }
 }

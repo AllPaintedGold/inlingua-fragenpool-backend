@@ -10,5 +10,6 @@ namespace backend.Services.SubjectService
     {
         Task<ServiceResponse<Subject>> AddSubject(Subject newSubject);
         Task<ServiceResponse<Subject>> DeleteSubject(int id);
+        Task<ServiceResponse<List<Subject>>> GetAllSubjects();
     }
 }

@@ -30,5 +30,10 @@ namespace backend.Controllers
         {
             return Ok(await _subjectService.DeleteSubject(id));
         }
+         [HttpGet("GetAllSubjects/")]
+        public async Task<ActionResult<ServiceResponse<List<Subject>>>> GetAllSubjects()
+        {
+            return Ok(await _subjectService.GetAllSubjects());
+        }
     }
 }
