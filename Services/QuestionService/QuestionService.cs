@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using backend.Data;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
-// write string for json column like this: "{ \"FirstName\":\"Jignesh\",\"LastName\":\"Trivedi\" }"
+// write string for json column like this: "{ \"FirstName\":\"chh\",\"LastName\":\"Trivedi\",\"huch\":{\"a\",\"b\",\"c\"} }"
 namespace backend.Services.QuestionService
 {
     public class QuestionService : IQuestionService
